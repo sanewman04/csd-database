@@ -4,4 +4,5 @@ class CaseStudy < ApplicationRecord
   has_many :authors, through: :case_study_authors
   has_many :tags
   has_many :documents
+  has_many :categories
 end

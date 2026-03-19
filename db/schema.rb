@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_18_025757) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_19_014738) do
   create_table "authors", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.text "first_name"
@@ -34,6 +34,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_18_025757) do
     t.text "tools_tests_assessments_skills_evaluationsummary"
     t.datetime "updated_at", null: false
     t.index ["patient_id"], name: "index_case_studies_on_patient_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.boolean "asha_big_9"
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.datetime "updated_at", null: false
   end
 
   create_table "documents", force: :cascade do |t|
