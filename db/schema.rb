@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_19_014738) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_22_024652) do
   create_table "authors", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.text "first_name"
@@ -36,16 +36,26 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_19_014738) do
     t.index ["patient_id"], name: "index_case_studies_on_patient_id"
   end
 
+  create_table "case_study_authors", force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.integer "case_study_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_case_study_authors_on_author_id"
+    t.index ["case_study_id"], name: "index_case_study_authors_on_case_study_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.boolean "asha_big_9"
+    t.integer "case_study_id", null: false
     t.datetime "created_at", null: false
     t.string "name"
     t.datetime "updated_at", null: false
+    t.index ["case_study_id"], name: "index_categories_on_case_study_id"
   end
 
   create_table "documents", force: :cascade do |t|
     t.integer "case_study_id", null: false
-    t.text "categories"
     t.datetime "created_at", null: false
     t.string "document"
     t.datetime "updated_at", null: false
@@ -64,11 +74,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_19_014738) do
   end
 
   create_table "tags", force: :cascade do |t|
+    t.integer "case_study_id", null: false
     t.datetime "created_at", null: false
     t.text "tag"
     t.datetime "updated_at", null: false
+    t.index ["case_study_id"], name: "index_tags_on_case_study_id"
   end
 
   add_foreign_key "case_studies", "patients"
+  add_foreign_key "case_study_authors", "authors"
+  add_foreign_key "case_study_authors", "case_studies"
+  add_foreign_key "categories", "case_studies"
   add_foreign_key "documents", "case_studies"
+  add_foreign_key "tags", "case_studies"
 end
