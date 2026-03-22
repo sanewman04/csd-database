@@ -1,3 +1,3 @@
 class Tag < ApplicationRecord
-    belongs_to :case_study
+  belongs_to :case_study
 end

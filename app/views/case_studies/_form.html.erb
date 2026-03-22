@@ -1,0 +1,77 @@
+<%= form_with(model: case_study) do |form| %>
+  <% if case_study.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(case_study.errors.count, "error") %> prohibited this case_study from being saved:</h2>
+
+      <ul>
+        <% case_study.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :developmental_acquired, style: "display: block" %>
+    <%= form.text_field :developmental_acquired %>
+  </div>
+
+  <div>
+    <%= form.label :date_submitted, style: "display: block" %>
+    <%= form.datetime_field :date_submitted %>
+  </div>
+
+  <div>
+    <%= form.label :date_reviewed, style: "display: block" %>
+    <%= form.datetime_field :date_reviewed %>
+  </div>
+
+  <div>
+    <%= form.label :last_updated, style: "display: block" %>
+    <%= form.datetime_field :last_updated %>
+  </div>
+
+  <div>
+    <%= form.label :case_summary_statement, style: "display: block" %>
+    <%= form.textarea :case_summary_statement %>
+  </div>
+
+  <div>
+    <%= form.label :backgroundinfo_subjective_pastmedicalhistory, style: "display: block" %>
+    <%= form.textarea :backgroundinfo_subjective_pastmedicalhistory %>
+  </div>
+
+  <div>
+    <%= form.label :tools_tests_assessments_skills_evaluationsummary, style: "display: block" %>
+    <%= form.textarea :tools_tests_assessments_skills_evaluationsummary %>
+  </div>
+
+  <div>
+    <%= form.label :objectives_observations, style: "display: block" %>
+    <%= form.textarea :objectives_observations %>
+  </div>
+
+  <div>
+    <%= form.label :diagnostic_statement, style: "display: block" %>
+    <%= form.textarea :diagnostic_statement %>
+  </div>
+
+  <div>
+    <%= form.label :recommendations_plan, style: "display: block" %>
+    <%= form.textarea :recommendations_plan %>
+  </div>
+
+  <div>
+    <%= form.label :patient_id, style: "display: block" %>
+    <%= form.collection_select :patient_id, Patient.all, :id, :id, prompt: "Select a patient" %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

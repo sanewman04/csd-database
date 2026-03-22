@@ -2,6 +2,8 @@
 
 one:
   tag: MyText
+  case_study: one
 
 two:
   tag: MyText
+  case_study: two

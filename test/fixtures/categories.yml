@@ -3,7 +3,9 @@
 one:
   name: MyString
   asha_big_9: false
+  case_study: one
 
 two:
   name: MyString
   asha_big_9: false
+  case_study: two

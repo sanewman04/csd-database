@@ -1,11 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  case_study: one
   document: MyString
-  categories: MyText
+  case_study: one
 
 two:
-  case_study: two
   document: MyString
-  categories: MyText
+  case_study: two
